@@ -1,0 +1,6 @@
+{% extends 'main/layout.html' %}
+
+{%block main %}
+<!-- include_sub.htmlをインクルード -->
+ {% include 'main/include_sub.html' with fmt='H:i:s' %}
+ {% endblock %}

@@ -1,0 +1,9 @@
+<!-- b.親テンプレートを継承 -->
+ {% extends 'main/layout.html' %}
+
+ <!-- c.個々のブロックを定義 -->
+  {% block title %}テンプレート継承{% endblock %}
+
+  {% block main %}
+  <p>{{ msg }}</p>
+  {% endblock %}
