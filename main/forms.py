@@ -4,6 +4,11 @@ from .validates import compare_today
 from .models import Book
 
 
+class BookModelForm(forms.ModelForm):
+  class Meta:
+    model = Book
+    fields = ('isbn', 'title', 'price', 'publisher', 'published')
+    
 # a.フォームを定義
 class BookForm(forms.Form):
   isbn = forms.CharField(label='ISBNコード',
