@@ -9,6 +9,9 @@ from django.db.models import Q
 from django.db.models import Count
 from django.shortcuts import redirect
 from django.http import Http404
+from .forms import BookForm
+from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_POST
 
 
 # a.リクエスト情報を受け取る
@@ -274,3 +277,22 @@ def getsession(request):
   title = request.session['app_title'] \
     if 'app_title' in request.session else '－' 
   return HttpResponse(title)
+
+def form_input(request):
+    # a.フォームオブジェクトを生成
+    form = BookForm()
+    return render(request, 'main/form_input.html', {
+        'form': form
+    })
+
+@require_POST
+def form_process(request):
+  form = BookForm(request.POST)
+  if form.is_valid():
+    return render(request, 'main/form_process.html', {
+      'form': form
+    })
+  else:
+    return render(request, 'main/form_input.html', {
+      'form': form
+    })

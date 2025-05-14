@@ -46,5 +46,8 @@ urlpatterns = [
     path('getcookie', views.getcookie, name='getcookie'),
     path('setsession', views.setsession, name='setsession'),
     path('getsession', views.getsession, name='getsession'),
+    path('form_input', views.form_input, name='form_input'),
+    path('form_process', views.form_process, name='form_process')
+
     
 ]
