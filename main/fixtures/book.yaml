@@ -1,0 +1,24 @@
+- model: main.book
+  pk: 1
+  fields:
+    isbn: 978-4-7981-6364-2
+    title: 独習Python
+    price: 3300
+    publisher: 翔泳社
+    published: 2020-06-22
+- model: main.book
+  pk: 2
+  fields:
+    isbn: 978-4-7981-5757-3
+    title: JavaScript逆引きレシピ
+    price: 3080
+    publisher: 翔泳社
+    published: 2018-10-15
+- model: main.book
+  pk: 3
+  fields:
+    isbn: 978-4-7981-8094-6
+    title: 独習Java新版
+    price: 3278
+    publisher: 翔泳社
+    published: 2024-02-15
