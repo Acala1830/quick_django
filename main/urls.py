@@ -35,4 +35,16 @@ urlpatterns = [
     path('union', views.union, name='union'),
     path('rel', views.rel, name='rel'),
     path('rel2', views.rel2, name='rel2'),
+    path('route_param/<int:id>', views.route_param, name='route_param'),
+    path('search/<path:keywd>', views.search, name='search'),
+    path('req_query', views.req_query, name='req_query'),
+    path('req_header', views.req_header, name='req_header'),
+    path('req_redirect', views.req_redirect, name='req_redirect'),
+    path('details/<int:id>', views.details, name='details'),
+    path('res_notfound', views.res_notfound, name='res_notfound'),
+    path('setcookie', views.setcookie, name='setcookie'),
+    path('getcookie', views.getcookie, name='getcookie'),
+    path('setsession', views.setsession, name='setsession'),
+    path('getsession', views.getsession, name='getsession'),
+    
 ]
