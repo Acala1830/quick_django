@@ -1,0 +1,10 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+<ul>
+    <!-- b.グループ単位 -->
+     {% for item in groups %}
+     <li>{{ item.publisher }}: {{ item.pub_count }}冊</li>
+     {% endfor %}
+</ul>
+{% endblock %}

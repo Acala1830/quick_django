@@ -1,0 +1,6 @@
+データベース
+ユーザー：db_user
+パスワード：db_pass12345
+sqlite3 db.sqlite3
+サーバー起動
+python manage.py runserver

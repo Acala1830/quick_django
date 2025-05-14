@@ -26,4 +26,13 @@ urlpatterns = [
     path('static', views.static, name='static'),
     path('slice', views.slice, name='slice'),
     path('date_time', views.date_time, name='date_time'),
+    path('filter', views.filter, name='filter'),
+    path('exclude', views.exclude, name='exclude'),
+    path('get', views.get, name='get'),
+    path('filter_or', views.filter_or, name='filter_or'),
+    path('filter_other', views.filter_other, name='filter_other'),
+    path('groupby', views.groupby, name='groupby'),
+    path('union', views.union, name='union'),
+    path('rel', views.rel, name='rel'),
+    path('rel2', views.rel2, name='rel2'),
 ]
