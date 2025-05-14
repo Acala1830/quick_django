@@ -3,9 +3,12 @@ from django.http import HttpResponse
 from .models import Book
 import random
 import datetime
+import urllib.parse
 from datetime import datetime
 from django.db.models import Q
 from django.db.models import Count
+from django.shortcuts import redirect
+from django.http import Http404
 
 
 # a.リクエスト情報を受け取る
@@ -213,3 +216,61 @@ def rel2(request):
     return render(request, 'main/rel2.html', {
         'books' : Book.objects.all()
     })
+    
+def search(request, keywd):
+  return HttpResponse(f'パラメーター：{keywd}')
+
+def route_param(request, id):
+    return HttpResponse(f'id値: {id}')
+    
+def req_query(request):
+  return HttpResponse(f'id値：{request.GET["id"]}')
+
+def req_header(request):
+  return HttpResponse(f'Use-Agent： {request.headers["User-Agent"]}')
+
+def req_redirect(request):
+  # return redirect('list')
+  # return redirect('http://wings.msn.to/', permanent=True)
+  # return redirect('route_param', id=10)
+
+  # path = reverse('route_param', kwargs={ 'id': 1 })
+  # return HttpResponse(path)
+  
+  book = Book.objects.get(pk=1)
+  return redirect(book)
+
+def details(request, id):
+  return HttpResponse(f'id値：{id}')
+
+def res_notfound(request):
+    try:
+        book = Book.objects.get(pk=108)
+    except Book.DoesNotExist:
+        raise Http404('指定の書籍情報が存在しません。')
+    return render(request, 'main/book_detail.html', {
+        'book': book
+    })
+    
+def setcookie(request):
+  response = HttpResponse(render(request, 'main/setcookie.html'))
+  response.set_cookie('app_title',
+    urllib.parse.quote('速習Django'), 60 * 60 * 24 * 30, samesite='Strict')
+  return response
+#   return redirect('http://wings.msn.to/')
+
+def getcookie(request):
+  app_title = urllib.parse.unquote(request.COOKIES['app_title']) \
+    if 'app_title' in request.COOKIES else '－'
+  return render(request, 'main/getcookie.html', {
+    'app_title': app_title
+  })
+  
+def setsession(request):
+  request.session['app_title'] = '速習Django'
+  return HttpResponse('セッションを保存しました。')
+
+def getsession(request):
+  title = request.session['app_title'] \
+    if 'app_title' in request.session else '－' 
+  return HttpResponse(title)

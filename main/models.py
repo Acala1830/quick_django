@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # a.Modelクラスを継承
 class Book(models.Model):
@@ -32,6 +33,9 @@ class Book(models.Model):
     # c.モデルの文字列表現
     def __str__(self):
         return f'{self.title}({self.publisher}/{self.price}円)'
+    
+    def get_absolute_url(self):
+        return f'details/{self.id}'
 
 class Review(models.Model):
     # 書籍情報との関連付け
@@ -64,3 +68,4 @@ class Author(models.Model):
     # Authorモデルの文字列表現
     def __str__(self):
         return self.name
+    
